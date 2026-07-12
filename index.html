@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meo Coc — BIM Coordinator & Builder</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2034%2032'%3E%3Cg%20stroke='%23C96442'%20stroke-width='2.6'%20fill='none'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M8%2015%20L7.5%205%20L14.5%2010.5'/%3E%3Cpath%20d='M26%2015%20L26.5%205%20L19.5%2010.5'/%3E%3Ccircle%20cx='17'%20cy='19'%20r='9.5'/%3E%3Cpath%20d='M23.7%2025.7%20C26.9%2027.9%2029.4%2025.1%2026.7%2022.9'%20stroke-width='2.2'/%3E%3C/g%3E%3Ccircle%20cx='13.6'%20cy='17.8'%20r='1.5'%20fill='%23C96442'/%3E%3Ccircle%20cx='20.4'%20cy='17.8'%20r='1.5'%20fill='%23C96442'/%3E%3C/svg%3E">
+<meta name="description" content="Meo Coc — BIM coordinator in Ho Chi Minh City. Projects, portfolio and writing on digital construction, trading, technology and life.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F0EEE6;
+  --bg-soft:#FAF9F5;
+  --ink:#1F1E1D;
+  --ink-2:#63615C;
+  --ink-3:#9B988F;
+  --line:#E3DFD3;
+  --clay:#C96442;
+  --clay-dark:#A94F30;
+  --clay-soft:#F4E3DA;
+  --olive:#788C5D;
+  --olive-soft:#E9EDDF;
+  --slate:#6A7BA2;
+  --slate-soft:#E5E9F2;
+  --ochre:#B58A3C;
+  --ochre-soft:#F3EAD8;
+  --serif:'Lora',Georgia,serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px;}
+a{color:var(--clay);text-decoration:none;}
+a:hover{color:var(--clay-dark);}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.2;}
+.label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);font-weight:600;}
+.spark{color:var(--clay);margin-right:8px;display:inline-block;}
+
+#progress{position:fixed;top:0;left:0;height:2.5px;width:0;background:var(--clay);z-index:120;}
+
+#intro{position:fixed;inset:0;background:var(--bg);z-index:110;display:flex;align-items:center;justify-content:center;transition:transform .75s cubic-bezier(.76,0,.24,1);animation:introSafety .01s 4.5s forwards;}
+#intro.done{transform:translateY(-101%);}
+#intro .intro-word{font-family:var(--serif);font-style:italic;font-size:clamp(2.4rem,7vw,5rem);color:var(--ink);}
+#intro .intro-word .spark{font-style:normal;}
+@keyframes introSafety{to{transform:translateY(-101%);visibility:hidden;}}
+
+header{position:sticky;top:0;background:rgba(240,238,230,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50;}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{display:flex;align-items:center;gap:10px;color:var(--ink);font-family:var(--serif);font-size:20px;font-weight:600;}
+.logo svg{display:block;overflow:visible;}
+.logo .ear{transform-origin:center 60%;}
+.logo:hover .ear-l{animation:wiggle .55s ease;}
+.logo:hover .ear-r{animation:wiggle .55s ease .08s;}
+.logo .tail{transform-origin:24px 26px;}
+.logo:hover .tail{animation:wiggle .55s ease .16s;}
+@keyframes wiggle{0%,100%{transform:rotate(0)}30%{transform:rotate(-10deg)}65%{transform:rotate(7deg)}}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:14.5px;font-weight:500;}
+.nav-links a{color:var(--ink-2);}
+.nav-links a:hover{color:var(--ink);}
+.nav-item{position:relative;}
+.nav-item::after{content:'';position:absolute;left:0;bottom:-5px;width:100%;height:1.5px;background:var(--clay);transform:scaleX(0);transform-origin:left;transition:transform .28s ease;}
+.nav-item:hover::after{transform:scaleX(1);}
+.lang-toggle{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;background:var(--bg-soft);}
+.lang-toggle button{border:0;background:transparent;padding:5px 13px;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink-3);cursor:pointer;transition:background .2s,color .2s;}
+.lang-toggle button.active{background:var(--ink);color:var(--bg-soft);}
+
+.hero{position:relative;padding:120px 0 110px;border-bottom:1px solid var(--line);overflow:hidden;}
+.hero .wrap{position:relative;z-index:2;}
+.hero-glow{position:absolute;top:10%;left:55%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(201,100,66,.16),transparent 65%);pointer-events:none;z-index:0;transition:transform .5s cubic-bezier(.2,.8,.3,1);}
+.contours{position:absolute;right:-140px;top:-40px;width:620px;height:620px;z-index:0;pointer-events:none;}
+.contours path{fill:none;stroke:var(--clay);}
+.drift{animation:drift 16s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:translate(0,0) rotate(0)}to{transform:translate(-26px,18px) rotate(2deg)}}
+.hero h1{font-size:clamp(2.4rem,5.4vw,4.1rem);max-width:840px;margin:20px 0 26px;}
+.hero h1 em{font-style:italic;color:var(--clay);position:relative;white-space:normal;}
+.hero h1 em::after{content:'';position:absolute;left:0;bottom:4px;width:100%;height:7px;background:var(--clay);opacity:.22;transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.76,0,.24,1) .9s;}
+.ready .hero h1 em::after{transform:scaleX(1);}
+.hero p{max-width:620px;color:var(--ink-2);font-size:18px;}
+.cta-row{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;}
+.btn{display:inline-block;padding:13px 28px;border-radius:99px;font-weight:600;font-size:15px;transition:background .2s ease,color .2s ease,transform .18s ease;will-change:transform;cursor:pointer;font-family:var(--sans);}
+.btn:active{transform:scale(.96);}
+.btn-primary{background:var(--clay);color:#fff;}
+.btn-primary:hover{background:var(--clay-dark);color:#fff;}
+.btn-ghost{border:1px solid var(--ink);color:var(--ink);background:transparent;}
+.btn-ghost:hover{background:var(--ink);color:var(--bg);}
+.scroll-cue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:var(--clay);font-size:20px;animation:bob 2.2s ease-in-out infinite;z-index:2;}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,9px)}}
+
+.js .up{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.3,1);}
+.js.ready .up{opacity:1;transform:none;}
+
+.marquee{border-bottom:1px solid var(--line);padding:20px 0;overflow:hidden;background:var(--bg-soft);}
+.marquee-track{display:flex;align-items:center;gap:46px;width:max-content;animation:slide 30s linear infinite;}
+.marquee:hover .marquee-track{animation-play-state:paused;}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-track span{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--ink-3);white-space:nowrap;}
+.marquee-track .spark{font-style:normal;font-size:16px;margin:0;}
+
+section{padding:96px 0;border-bottom:1px solid var(--line);}
+.sec-head{margin-bottom:48px;}
+.sec-head h2{font-size:clamp(1.7rem,3.2vw,2.3rem);margin-top:14px;}
+.sec-head .sub{color:var(--ink-2);margin-top:10px;max-width:600px;}
+
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start;}
+.about-grid p+p{margin-top:16px;}
+.about-grid .bio{color:var(--ink-2);}
+.fact-card{background:var(--bg-soft);border:1px solid var(--line);border-radius:16px;padding:26px 28px;}
+.fact{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
+.fact:last-child{border-bottom:0;}
+.fact .k{color:var(--ink-3);}
+.fact .v{font-weight:500;text-align:right;}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px;}
+.chip{font-size:13px;font-weight:500;padding:6px 14px;border-radius:99px;background:var(--bg-soft);border:1px solid var(--line);color:var(--ink-2);transition:border-color .2s,color .2s,transform .2s;}
+.chip:hover{border-color:var(--clay);color:var(--clay-dark);transform:translateY(-2px);}
+
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--clay-soft);border-radius:12px;padding:14px 18px;font-size:14px;color:var(--clay-dark);margin-bottom:36px;max-width:640px;}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;perspective:1200px;}
+.card{background:var(--bg-soft);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;will-change:transform;}
+.card:hover{box-shadow:0 18px 40px rgba(31,30,29,.09);border-color:#D4CEBE;}
+.thumb{height:150px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.thumb svg{transition:transform .4s cubic-bezier(.2,.8,.3,1);}
+.card:hover .thumb svg{transform:scale(1.05) rotate(-1deg);}
+.card-body{padding:22px 24px 26px;}
+.card-body h3{font-size:19px;margin-bottom:8px;}
+.card-body p{font-size:14.5px;color:var(--ink-2);}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
+.tag{font-size:12px;font-weight:500;padding:4px 10px;border-radius:99px;background:var(--bg);border:1px solid var(--line);color:var(--ink-3);}
+
+.cat-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
+.cat{font-size:13.5px;font-weight:600;padding:7px 16px;border-radius:99px;}
+.cat.clay{background:var(--clay-soft);color:var(--clay-dark);}
+.cat.olive{background:var(--olive-soft);color:#4C5A38;}
+.cat.slate{background:var(--slate-soft);color:#42517A;}
+.cat.ochre{background:var(--ochre-soft);color:#7D5E24;}
+.post-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;perspective:1200px;}
+.post{background:var(--bg-soft);border:1px solid var(--line);border-radius:16px;padding:26px 28px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;will-change:transform;}
+.post:hover{box-shadow:0 18px 40px rgba(31,30,29,.09);border-color:#D4CEBE;}
+.post .meta{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--ink-3);margin-bottom:14px;}
+.post h3{font-size:20px;margin-bottom:10px;}
+.post h3 a{color:var(--ink);}
+.post h3 a:hover{color:var(--clay);}
+.post p{font-size:14.5px;color:var(--ink-2);}
+.post .more{display:inline-block;margin-top:16px;font-size:14px;font-weight:600;transition:transform .25s ease;}
+.post:hover .more{transform:translateX(5px);}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.on{opacity:1;transform:none;}
+.reveal .card,.reveal .post{opacity:0;transform:translateY(22px);}
+.reveal.on .card,.reveal.on .post{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1),box-shadow .25s ease,border-color .25s ease;}
+.reveal.on .card:nth-child(1),.reveal.on .post:nth-child(1){transition-delay:.05s;}
+.reveal.on .card:nth-child(2),.reveal.on .post:nth-child(2){transition-delay:.17s;}
+.reveal.on .card:nth-child(3),.reveal.on .post:nth-child(3){transition-delay:.29s;}
+.reveal.on .post:nth-child(4){transition-delay:.41s;}
+
+.contact{text-align:center;border-bottom:0;position:relative;overflow:hidden;}
+.contact h2{font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:640px;margin:14px auto 18px;}
+.contact>.wrap>p{color:var(--ink-2);max-width:520px;margin:0 auto;}
+.big-mail{display:inline-block;font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.8vw,1.9rem);margin-top:30px;position:relative;color:var(--ink);}
+.big-mail::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--clay);transform:scaleX(0);transform-origin:right;transition:transform .35s ease;}
+.big-mail:hover{color:var(--clay);}
+.big-mail:hover::after{transform:scaleX(1);transform-origin:left;}
+.socials{display:flex;justify-content:center;gap:12px;margin-top:36px;flex-wrap:wrap;}
+.social{padding:10px 22px;border:1px solid var(--line);border-radius:99px;font-size:14px;font-weight:500;color:var(--ink-2);background:var(--bg-soft);transition:border-color .2s,color .2s,transform .2s;}
+.social:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-3px);}
+
+footer{border-top:1px solid var(--line);padding:34px 0;font-size:13.5px;color:var(--ink-3);}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+
+@media (hover:none){.hero-glow{left:50%;top:0;transform:translateX(-50%);}}
+@media (prefers-reduced-motion:reduce){
+  .reveal,.reveal .card,.reveal .post,.js .up{opacity:1;transform:none;transition:none;}
+  html{scroll-behavior:auto;}
+  .marquee-track{animation:none;}
+  .drift{animation:none;}
+  .scroll-cue{animation:none;}
+  #intro{display:none;}
+  .hero-glow{display:none;}
+}
+@media (max-width:860px){
+  .proj-grid{grid-template-columns:1fr;}
+  .post-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;gap:36px;}
+  .nav-links{gap:16px;}
+  .nav-links a.nav-item{display:none;}
+  .hero{padding:84px 0 84px;}
+  section{padding:70px 0;}
+  .contours{right:-260px;opacity:.6;}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="intro"><div class="intro-word"><span id="introWord">Xin chào</span></div></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Meo Coc home">
+      <svg width="28" height="26" viewBox="0 0 34 32" fill="none" aria-hidden="true">
+        <path class="ear ear-l" d="M8 15 L7.5 5 L14.5 10.5" stroke="#C96442" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="ear ear-r" d="M26 15 L26.5 5 L19.5 10.5" stroke="#C96442" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="17" cy="19" r="9.5" stroke="#C96442" stroke-width="2.6"/>
+        <circle cx="13.6" cy="17.8" r="1.5" fill="#C96442"/>
+        <circle cx="20.4" cy="17.8" r="1.5" fill="#C96442"/>
+        <path d="M1.5 18.2 L6.8 18.8 M2.2 22 L7.2 21" stroke="#C96442" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M32.5 18.2 L27.2 18.8 M31.8 22 L26.8 21" stroke="#C96442" stroke-width="1.8" stroke-linecap="round"/>
+        <path class="tail" d="M23.7 25.7 C26.9 27.9 29.4 25.1 26.7 22.9" stroke="#C96442" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      Meo Coc
+    </a>
+    <nav class="nav-links">
+      <a class="nav-item" href="#about" data-en="About" data-vi="Về mình">About</a>
+      <a class="nav-item" href="#projects" data-en="Projects" data-vi="Dự án">Projects</a>
+      <a class="nav-item" href="#blog" data-en="Blog" data-vi="Blog">Blog</a>
+      <a class="nav-item" href="#contact" data-en="Contact" data-vi="Liên hệ">Contact</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button id="btn-en" onclick="setLang('en')" class="active">EN</button>
+        <button id="btn-vi" onclick="setLang('vi')">VI</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-glow" id="glow"></div>
+  <svg class="contours" viewBox="0 0 600 600" aria-hidden="true">
+    <g class="drift">
+      <path d="M300 90 C420 80 520 170 510 290 C500 410 420 510 300 520 C180 530 90 430 88 300 C86 170 180 100 300 90 Z" stroke-opacity=".14" stroke-width="1.6"/>
+      <path d="M300 140 C390 132 468 205 462 298 C456 391 392 466 300 472 C208 478 140 400 138 300 C136 200 210 148 300 140 Z" stroke-opacity=".12" stroke-width="1.4"/>
+      <path d="M300 190 C365 184 418 240 414 302 C410 364 362 418 300 424 C238 430 190 372 188 302 C186 232 235 196 300 190 Z" stroke-opacity=".10" stroke-width="1.3"/>
+      <path d="M300 240 C340 236 368 272 366 304 C364 340 336 372 300 376 C264 380 236 344 234 304 C232 264 260 244 300 240 Z" stroke-opacity=".08" stroke-width="1.2"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="label up" style="transition-delay:.05s;"><span class="spark">✳</span><span data-en="BIM coordinator · Systems builder · Lifelong learner" data-vi="Điều phối BIM · Người xây hệ thống · Học trọn đời">BIM coordinator · Systems builder · Lifelong learner</span></div>
+    <h1 class="up" style="transition-delay:.18s;"><span data-en="Building models for infrastructure." data-vi="Dựng mô hình cho hạ tầng.">Building models for infrastructure.</span> <em data-en="Building systems for life." data-vi="Dựng hệ thống cho cuộc đời.">Building systems for life.</em></h1>
+    <p class="up" style="transition-delay:.32s;" data-en="I am Meo Coc — a BIM coordinator in Ho Chi Minh City. This is where I share my projects and write about digital construction, trading, technology, and the quiet discipline of getting a little better every day." data-vi="Mình là Meo Coc — BIM coordinator tại TP.HCM. Đây là nơi mình chia sẻ dự án và viết về xây dựng số, trading, công nghệ, cùng kỷ luật thầm lặng của việc tốt lên mỗi ngày.">I am Meo Coc — a BIM coordinator in Ho Chi Minh City. This is where I share my projects and write about digital construction, trading, technology, and the quiet discipline of getting a little better every day.</p>
+    <div class="cta-row up" style="transition-delay:.46s;">
+      <a class="btn btn-primary" href="#projects" data-en="View projects" data-vi="Xem dự án">View projects</a>
+      <a class="btn btn-ghost" href="#blog" data-en="Read the blog" data-vi="Đọc blog">Read the blog</a>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">↓</div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span data-en="BIM coordination" data-vi="Điều phối BIM">BIM coordination</span><span class="spark">✳</span>
+    <span data-en="Trading systems" data-vi="Hệ thống trading">Trading systems</span><span class="spark">✳</span>
+    <span data-en="Automation" data-vi="Tự động hóa">Automation</span><span class="spark">✳</span>
+    <span data-en="Infrastructure" data-vi="Hạ tầng">Infrastructure</span><span class="spark">✳</span>
+    <span data-en="Running at dawn" data-vi="Chạy bộ lúc bình minh">Running at dawn</span><span class="spark">✳</span>
+    <span data-en="Continuous learning" data-vi="Học không ngừng">Continuous learning</span><span class="spark">✳</span>
+    <span data-en="BIM coordination" data-vi="Điều phối BIM">BIM coordination</span><span class="spark">✳</span>
+    <span data-en="Trading systems" data-vi="Hệ thống trading">Trading systems</span><span class="spark">✳</span>
+    <span data-en="Automation" data-vi="Tự động hóa">Automation</span><span class="spark">✳</span>
+    <span data-en="Infrastructure" data-vi="Hạ tầng">Infrastructure</span><span class="spark">✳</span>
+    <span data-en="Running at dawn" data-vi="Chạy bộ lúc bình minh">Running at dawn</span><span class="spark">✳</span>
+    <span data-en="Continuous learning" data-vi="Học không ngừng">Continuous learning</span><span class="spark">✳</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label"><span class="spark">✳</span><span data-en="About" data-vi="Về mình">About</span></div>
+      <h2 data-en="Engineer by training, builder by nature" data-vi="Kỹ sư theo nghề, người kiến tạo theo bản năng">Engineer by training, builder by nature</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="bio">
+        <p data-en="I coordinate BIM for infrastructure projects in Vietnam — turning drawings, disciplines and deadlines into one coherent model. My day is spent in Revit and Navisworks, resolving clashes before they become concrete problems." data-vi="Mình điều phối BIM cho các dự án hạ tầng tại Việt Nam — biến bản vẽ, bộ môn và deadline thành một mô hình thống nhất. Ngày của mình xoay quanh Revit và Navisworks, xử lý xung đột trước khi chúng thành vấn đề ngoài công trường.">I coordinate BIM for infrastructure projects in Vietnam — turning drawings, disciplines and deadlines into one coherent model. My day is spent in Revit and Navisworks, resolving clashes before they become concrete problems.</p>
+        <p data-en="Outside working hours I study the markets and build my own trading systems, tinker with automation, and test ideas until they break. I believe the same habits build good models, good trades and a good life: patience, structure, and honest review." data-vi="Ngoài giờ làm, mình nghiên cứu thị trường và xây hệ thống trading riêng, vọc automation, và thử ý tưởng đến khi chúng lộ điểm gãy. Mình tin cùng một thói quen sẽ tạo nên mô hình tốt, lệnh giao dịch tốt và cuộc sống tốt: kiên nhẫn, cấu trúc, và nhìn lại trung thực.">Outside working hours I study the markets and build my own trading systems, tinker with automation, and test ideas until they break. I believe the same habits build good models, good trades and a good life: patience, structure, and honest review.</p>
+        <p data-en="When the screen goes dark: running roads at dawn and football on turf with friends." data-vi="Khi màn hình tắt: chạy bộ lúc bình minh và đá bóng sân cỏ nhân tạo cùng bạn bè.">When the screen goes dark: running roads at dawn and football on turf with friends.</p>
+        <div class="chips">
+          <span class="chip">Revit</span>
+          <span class="chip">Navisworks</span>
+          <span class="chip">AutoCAD Civil 3D</span>
+          <span class="chip">Dynamo</span>
+          <span class="chip" data-en="BIM coordination" data-vi="Điều phối BIM">BIM coordination</span>
+          <span class="chip" data-en="Clash detection" data-vi="Kiểm tra xung đột">Clash detection</span>
+          <span class="chip">MetaTrader 5</span>
+        </div>
+      </div>
+      <div class="fact-card">
+        <div class="fact"><span class="k" data-en="Base" data-vi="Nơi sống">Base</span><span class="v" data-en="Ho Chi Minh City, VN" data-vi="TP. Hồ Chí Minh, VN">Ho Chi Minh City, VN</span></div>
+        <div class="fact"><span class="k" data-en="Role" data-vi="Vai trò">Role</span><span class="v">BIM Coordinator</span></div>
+        <div class="fact"><span class="k" data-en="Focus" data-vi="Trọng tâm">Focus</span><span class="v" data-en="Infrastructure projects" data-vi="Dự án hạ tầng">Infrastructure projects</span></div>
+        <div class="fact"><span class="k" data-en="Side quests" data-vi="Đường phụ">Side quests</span><span class="v" data-en="Trading · Freelance BIM" data-vi="Trading · BIM freelance">Trading · Freelance BIM</span></div>
+        <div class="fact"><span class="k" data-en="Off screen" data-vi="Ngoài màn hình">Off screen</span><span class="v" data-en="Running · Football" data-vi="Chạy bộ · Bóng đá">Running · Football</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label"><span class="spark">✳</span><span data-en="Selected projects" data-vi="Dự án tiêu biểu">Selected projects</span></div>
+      <h2 data-en="Work I am proud of" data-vi="Những gì mình tự hào">Work I am proud of</h2>
+      <p class="sub" data-en="A few projects that show how I think: coordination first, details always." data-vi="Vài dự án cho thấy cách mình tư duy: phối hợp trước tiên, chi tiết luôn luôn.">A few projects that show how I think: coordination first, details always.</p>
+    </div>
+    <div class="note reveal"><span>✳</span><span data-en="Sample content — replace these three cards with your real projects and screenshots." data-vi="Nội dung mẫu — anh thay 3 thẻ này bằng dự án thật và ảnh chụp mô hình nhé.">Sample content — replace these three cards with your real projects and screenshots.</span></div>
+    <div class="proj-grid reveal">
+      <article class="card">
+        <div class="thumb" style="background:var(--clay-soft);">
+          <svg width="196" viewBox="0 0 220 130" fill="none" aria-hidden="true"><g stroke="#A94F30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 88 H208 M12 93 H208"/><path d="M62 88 V20 M56 34 H68"/><path d="M148 88 V20 M142 34 H154"/><g stroke-width="1.4"><path d="M62 24 L24 86 M62 26 L38 86 M62 28 L50 86"/><path d="M62 24 L100 86 M62 26 L88 86 M62 28 L76 86"/><path d="M148 24 L110 86 M148 26 L122 86 M148 28 L134 86"/><path d="M148 24 L186 86 M148 26 L172 86 M148 28 L160 86"/></g><path d="M62 93 V108 M148 93 V108"/><path d="M10 116 Q17 111 24 116 T38 116 T52 116 T66 116 T80 116 T94 116 T108 116 T122 116 T136 116 T150 116 T164 116 T178 116 T192 116 T206 116" stroke-width="1.6"/><path d="M196 16 V32 M188 24 H204 M190.5 18.5 L201.5 29.5 M201.5 18.5 L190.5 29.5" stroke-width="1.6"/></g></svg>
+        </div>
+        <div class="card-body">
+          <h3 data-en="Highway interchange model" data-vi="Mô hình nút giao cao tốc">Highway interchange model</h3>
+          <p data-en="Full-discipline BIM model for a multi-level interchange: alignment, structures and drainage coordinated in one federated model." data-vi="Mô hình BIM đầy đủ bộ môn cho nút giao nhiều tầng: tuyến, kết cấu và thoát nước phối hợp trong một mô hình liên kết.">Full-discipline BIM model for a multi-level interchange: alignment, structures and drainage coordinated in one federated model.</p>
+          <div class="tags"><span class="tag">Revit</span><span class="tag">Navisworks</span><span class="tag">Civil 3D</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb" style="background:var(--slate-soft);">
+          <svg width="196" viewBox="0 0 220 130" fill="none" aria-hidden="true"><g stroke="#42517A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M28 96 V52 L52 36 V52 L76 36 V52 L100 36 V96"/><path d="M36 96 V68 H58 V96 M66 96 V68 H90 V96"/><path d="M16 96 H110"/><path d="M118 96 V74 H182 C193 74 198 79 198 87 V96"/><rect x="126" y="79" width="11" height="9" rx="1.5"/><rect x="143" y="79" width="11" height="9" rx="1.5"/><rect x="160" y="79" width="11" height="9" rx="1.5"/><path d="M176 74 V96"/><rect x="185" y="79" width="7" height="9" rx="1.5"/><circle cx="132" cy="101" r="4"/><circle cx="184" cy="101" r="4"/><path d="M112 107 H206"/><path d="M148 74 L156 66 L164 74 M118 62 H196" stroke-width="1.6"/><path d="M196 26 V40 M189 33 H203 M191 28 L201 38 M201 28 L191 38" stroke-width="1.6"/></g></svg>
+        </div>
+        <div class="card-body">
+          <h3 data-en="Metro depot coordination" data-vi="Phối hợp depot metro">Metro depot coordination</h3>
+          <p data-en="Clash detection and coordination workflow for a rail depot — hundreds of clashes resolved before issue-for-construction." data-vi="Quy trình kiểm tra xung đột và phối hợp cho depot đường sắt — hàng trăm clash được xử lý trước khi phát hành thi công.">Clash detection and coordination workflow for a rail depot — hundreds of clashes resolved before issue-for-construction.</p>
+          <div class="tags"><span class="tag">Navisworks</span><span class="tag">BIM 360</span><span class="tag">QA/QC</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb" style="background:var(--olive-soft);">
+          <svg width="196" viewBox="0 0 220 130" fill="none" aria-hidden="true"><g stroke="#4C5A38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 38 H208"/><g stroke-width="1.3"><path d="M24 38 L18 44 M40 38 L34 44 M56 38 L50 44 M104 38 L98 44 M120 38 L114 44 M136 38 L130 44 M152 38 L146 44 M168 38 L162 44 M184 38 L178 44 M200 38 L194 44"/></g><path d="M64 38 V92 M82 38 V92"/><path d="M58 32 H88 M58 32 V38 M88 32 V38"/><g stroke-width="1.6"><path d="M68 50 H78 M68 60 H78 M68 70 H78 M68 80 H78"/></g><path d="M82 80 L204 88 M82 94 L204 102"/><g stroke-width="1.6"><path d="M98 88 L118 89.5 M118 89.5 L112 86.8 M118 89.5 L112.5 92.6"/><path d="M146 91.5 L166 93 M166 93 L160 90.3 M166 93 L160.5 96.1"/></g><path d="M12 60 L64 66 M12 70 L64 76"/><path d="M66 86 Q69 84 72 86 T78 86" stroke-width="1.6"/><path d="M190 12 V24 M184 18 H196 M185.8 13.8 L194.2 22.2 M194.2 13.8 L185.8 22.2" stroke-width="1.5"/></g></svg>
+        </div>
+        <div class="card-body">
+          <h3 data-en="Drainage network automation" data-vi="Tự động hóa mạng thoát nước">Drainage network automation</h3>
+          <p data-en="Dynamo scripts that cut repetitive modeling time for a drainage network — model once, update everywhere." data-vi="Script Dynamo cắt giảm thời gian dựng hình lặp lại cho mạng thoát nước — dựng một lần, cập nhật mọi nơi.">Dynamo scripts that cut repetitive modeling time for a drainage network — model once, update everywhere.</p>
+          <div class="tags"><span class="tag">Dynamo</span><span class="tag">Python</span><span class="tag">Civil 3D</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label"><span class="spark">✳</span><span data-en="Writing" data-vi="Bài viết">Writing</span></div>
+      <h2 data-en="Notes from the journey" data-vi="Ghi chép trên hành trình">Notes from the journey</h2>
+      <p class="sub" data-en="Four threads, one habit: think in public, learn in public." data-vi="Bốn mạch viết, một thói quen: nghĩ công khai, học công khai.">Four threads, one habit: think in public, learn in public.</p>
+    </div>
+    <div class="cat-row reveal">
+      <span class="cat clay">BIM &amp; AEC</span>
+      <span class="cat olive">Trading</span>
+      <span class="cat slate" data-en="Tech &amp; tinkering" data-vi="Công nghệ &amp; vọc vạch">Tech &amp; tinkering</span>
+      <span class="cat ochre" data-en="Life" data-vi="Đời sống">Life</span>
+    </div>
+    <div class="post-grid reveal">
+      <article class="post">
+        <div class="meta"><span class="cat clay" style="font-size:12px;padding:4px 12px;">BIM &amp; AEC</span><span data-en="Sample post" data-vi="Bài mẫu">Sample post</span></div>
+        <h3><a href="#" data-en="The clash detection checklist I wish I had earlier" data-vi="Checklist kiểm tra xung đột mình ước có sớm hơn">The clash detection checklist I wish I had earlier</a></h3>
+        <p data-en="Most clashes are not modeling errors — they are communication errors. A practical checklist for coordination meetings that actually end on time." data-vi="Phần lớn clash không phải lỗi dựng hình — mà là lỗi giao tiếp. Một checklist thực dụng cho các buổi họp phối hợp kết thúc đúng giờ.">Most clashes are not modeling errors — they are communication errors. A practical checklist for coordination meetings that actually end on time.</p>
+        <a class="more" href="#" data-en="Read more →" data-vi="Đọc tiếp →">Read more →</a>
+      </article>
+      <article class="post">
+        <div class="meta"><span class="cat olive" style="font-size:12px;padding:4px 12px;">Trading</span><span data-en="Sample post" data-vi="Bài mẫu">Sample post</span></div>
+        <h3><a href="#" data-en="What testing my first EA taught me about risk" data-vi="Test EA đầu tiên dạy mình điều gì về rủi ro">What testing my first EA taught me about risk</a></h3>
+        <p data-en="Backtests flatter you. Forward tests humble you. Notes on position sizing, drawdown and the psychology of letting a system run." data-vi="Backtest nịnh bạn. Forward test dạy bạn khiêm tốn. Ghi chép về khối lượng lệnh, drawdown và tâm lý khi để hệ thống tự chạy.">Backtests flatter you. Forward tests humble you. Notes on position sizing, drawdown and the psychology of letting a system run.</p>
+        <a class="more" href="#" data-en="Read more →" data-vi="Đọc tiếp →">Read more →</a>
+      </article>
+      <article class="post">
+        <div class="meta"><span class="cat slate" style="font-size:12px;padding:4px 12px;" data-en="Tech &amp; tinkering" data-vi="Công nghệ &amp; vọc vạch">Tech &amp; tinkering</span><span data-en="Sample post" data-vi="Bài mẫu">Sample post</span></div>
+        <h3><a href="#" data-en="Automating the boring half of BIM work" data-vi="Tự động hóa nửa nhàm chán của công việc BIM">Automating the boring half of BIM work</a></h3>
+        <p data-en="Small scripts, big hours saved. The automation setup I use for sheet management, exports and naming conventions." data-vi="Script nhỏ, tiết kiệm hàng giờ lớn. Bộ setup tự động mình dùng cho quản lý sheet, xuất bản vẽ và quy tắc đặt tên.">Small scripts, big hours saved. The automation setup I use for sheet management, exports and naming conventions.</p>
+        <a class="more" href="#" data-en="Read more →" data-vi="Đọc tiếp →">Read more →</a>
+      </article>
+      <article class="post">
+        <div class="meta"><span class="cat ochre" style="font-size:12px;padding:4px 12px;" data-en="Life" data-vi="Đời sống">Life</span><span data-en="Sample post" data-vi="Bài mẫu">Sample post</span></div>
+        <h3><a href="#" data-en="Running slow to think clearly" data-vi="Chạy chậm để nghĩ rõ">Running slow to think clearly</a></h3>
+        <p data-en="Dawn runs in Saigon and what they do for hard decisions — in models, in markets, in life." data-vi="Những buổi chạy lúc bình minh ở Sài Gòn và điều chúng làm được cho các quyết định khó — trong mô hình, trên thị trường, và trong đời.">Dawn runs in Saigon and what they do for hard decisions — in models, in markets, in life.</p>
+        <a class="more" href="#" data-en="Read more →" data-vi="Đọc tiếp →">Read more →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <div class="label"><span class="spark">✳</span><span data-en="Contact" data-vi="Liên hệ">Contact</span></div>
+    <h2 data-en="Have a project, a question, or a good idea?" data-vi="Có dự án, câu hỏi, hay một ý tưởng hay?">Have a project, a question, or a good idea?</h2>
+    <p data-en="Open to freelance BIM work, collaboration and honest conversations. The inbox is always warm." data-vi="Mình sẵn sàng nhận job BIM freelance, hợp tác và những cuộc trò chuyện thẳng thắn. Hộp thư luôn ấm.">Open to freelance BIM work, collaboration and honest conversations. The inbox is always warm.</p>
+    <div><a class="big-mail" href="mailto:toilatruc999@gmail.com">toilatruc999@gmail.com</a></div>
+    <div class="cta-row" style="justify-content:center;">
+      <a class="btn btn-primary" href="mailto:toilatruc999@gmail.com" data-en="Say hello" data-vi="Gửi lời chào">Say hello</a>
+      <button class="btn btn-ghost" id="copyEmail" data-en="Copy email" data-vi="Copy email">Copy email</button>
+    </div>
+    <div class="socials">
+      <a class="social" href="#" title="Update your GitHub URL">GitHub</a>
+      <a class="social" href="#" title="Update your LinkedIn URL">LinkedIn</a>
+      <a class="social" href="#" title="Update your Upwork URL">Upwork</a>
+      <a class="social" href="#" title="Update your X URL">X</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Meo Coc · <span data-en="Made with care in Saigon" data-vi="Làm bằng sự chăm chút tại Sài Gòn">Made with care in Saigon</span></span>
+    <span><a href="#top" data-en="Back to top ↑" data-vi="Lên đầu trang ↑">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<script>
+var current = 'en';
+function setLang(lang){
+  current = lang;
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-vi');
+  });
+  document.documentElement.lang = lang;
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
+  try{ localStorage.setItem('meococ-lang', lang); }catch(e){}
+}
+(function(){
+  document.body.classList.add('js');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var saved = 'en';
+  try{ saved = localStorage.getItem('meococ-lang') || 'en'; }catch(e){}
+  if(saved !== 'en'){ setLang(saved); }
+
+  var intro = document.getElementById('intro');
+  var seen = false;
+  try{ seen = sessionStorage.getItem('meococ-intro') === '1'; }catch(e){}
+  function ready(){ document.body.classList.add('ready'); }
+  if(reduced || seen){
+    if(intro) intro.remove();
+    ready();
+  } else {
+    var words = ['Xin chào', 'Hello', '<span class="spark" style="margin:0;">✳</span>'];
+    var w = document.getElementById('introWord');
+    var i = 0;
+    var iv = setInterval(function(){
+      i++;
+      if(i < words.length){ w.innerHTML = words[i]; }
+      else{
+        clearInterval(iv);
+        intro.classList.add('done');
+        ready();
+        try{ sessionStorage.setItem('meococ-intro','1'); }catch(e){}
+        setTimeout(function(){ intro.remove(); }, 900);
+      }
+    }, 520);
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('on'); io.unobserve(en.target); }
+    });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var bar = document.getElementById('progress');
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    bar.style.width = (p * 100) + '%';
+  }, {passive:true});
+
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if(fine && !reduced){
+    var hero = document.querySelector('.hero');
+    var glow = document.getElementById('glow');
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect();
+      glow.style.left = '0'; glow.style.top = '0';
+      glow.style.transform = 'translate(' + (e.clientX - r.left - 260) + 'px,' + (e.clientY - r.top - 260) + 'px)';
+    });
+
+    document.querySelectorAll('.btn').forEach(function(b){
+      b.addEventListener('mousemove', function(e){
+        var r = b.getBoundingClientRect();
+        b.style.transform = 'translate(' + ((e.clientX - r.left - r.width/2) * .18) + 'px,' + ((e.clientY - r.top - r.height/2) * .3) + 'px)';
+      });
+      b.addEventListener('mouseleave', function(){ b.style.transform = ''; });
+    });
+
+    document.querySelectorAll('.card, .post').forEach(function(c){
+      c.addEventListener('mousemove', function(e){
+        var r = c.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - .5;
+        var y = (e.clientY - r.top) / r.height - .5;
+        c.style.transform = 'translateY(-5px) rotateX(' + (-y * 4) + 'deg) rotateY(' + (x * 4) + 'deg)';
+      });
+      c.addEventListener('mouseleave', function(){ c.style.transform = ''; });
+    });
+  }
+
+  var copyBtn = document.getElementById('copyEmail');
+  copyBtn.addEventListener('click', function(){
+    function done(){
+      copyBtn.textContent = current === 'en' ? 'Copied ✓' : 'Đã copy ✓';
+      setTimeout(function(){ setLang(current); }, 1600);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText('toilatruc999@gmail.com').then(done, function(){});
+    }
+  });
+})();
+</script>
+</body>
+</html>
