@@ -99,7 +99,6 @@ header.hide{transform:translateY(-101%);}
 body.ready .mask>span{transform:none;}
 .mask.m2>span{transition-delay:.1s;}
 .mask.m3>span{transition-delay:.2s;}
-.hero-name .l2{margin-left:clamp(40px,9vw,160px);}
 .hero-name .l3{color:var(--red);}
 .dot-red{color:var(--red);font-style:normal;}
 .o-solid{color:var(--red);font-style:normal;}
