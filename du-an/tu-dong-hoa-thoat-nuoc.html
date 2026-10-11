@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tự động hóa mạng thoát nước — Meo Coc</title>
+<meta name="description" content="Case study: script Dynamo + Python đọc mạng lưới thoát nước từ bảng tính và đặt thẳng vào mô hình — dựng một lần, cập nhật mọi nơi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..500;1,6..72,400..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Tới nội dung chính</a>
+
+<div class="rail-l" aria-hidden="true">MEOCOC — SÀI GÒN — 10.8231°B 106.6297°Đ</div>
+<div class="rail-r" aria-hidden="true"><i id="progress"></i></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="/" class="brand"><i></i>MEOCOC</a>
+    <div class="nav-r">
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="/#projects" class="act">DỰ ÁN</a>
+        <a href="/#about">GIỚI THIỆU</a>
+        <a href="/#cv">HỒ SƠ</a>
+        <a href="/#writing">GHI CHÉP</a>
+        <a href="/#contact">LIÊN HỆ</a>
+      </nav>
+      <a class="avail" href="/#contact"><i></i>SẴN SÀNG 2026</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <a class="back" href="/#projects">← TẤT CẢ DỰ ÁN</a>
+    <div class="kicker rv">DỰ ÁN · P.03 — TỰ ĐỘNG HÓA · BIM</div>
+    <h1 class="rv" style="--d:.08s;view-transition-name:p3;">Tự động hóa mạng thoát nước</h1>
+    <div class="meta-grid rv" style="--d:.16s;">
+      <div><b>Năm</b><span>2023</span></div>
+      <div><b>Vai trò</b><span>Tự động hóa · BIM</span></div>
+      <div><b>Công cụ</b><span>Dynamo · Python · Civil 3D</span></div>
+      <div><b>Đầu vào</b><span>Bảng tính mạng lưới</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="case-grid">
+
+    <figure class="wide rv" style="margin:0;">
+      <div class="media-slot" style="background:var(--paper);aspect-ratio:21/9;">
+        <svg viewBox="0 0 720 260" fill="none" style="width:80%;height:auto;position:static;" aria-hidden="true">
+          <g stroke="#141412" stroke-width="2.4" stroke-linecap="round">
+            <path d="M60 90 H660"/>
+            <g stroke-width="1.4" opacity=".65"><path d="M92 90 V98 M144 90 V98 M196 90 V98 M248 90 V98 M300 90 V98 M352 90 V98 M404 90 V98 M456 90 V98 M508 90 V98 M560 90 V98 M612 90 V98"/></g>
+            <path d="M200 90 V180 M240 90 V180"/>
+            <path d="M186 72 H254 V90 M254 72 V90"/>
+            <g stroke-width="1.6"><path d="M208 116 H232 M208 136 H232 M208 156 H232"/></g>
+            <path d="M254 130 C340 116 430 168 660 158"/>
+            <path d="M254 168 C340 154 430 206 660 196"/>
+            <g stroke-width="1.5"><path d="M380 148 L404 150 M404 150 L395 146 M404 150 L395 154"/><path d="M500 160 L524 162 M524 162 L515 158 M524 162 L515 166"/></g>
+          </g>
+          <g stroke="#8B897F" stroke-width="1.2"><path d="M60 230 H660 M60 223 V237 M660 223 V237"/><text x="240" y="252" font-family="IBM Plex Mono" font-size="13" fill="#6F6D64">MẠNG LƯỚI 1.2 km · 84 HỐ GA</text></g>
+          <circle cx="240" cy="90" r="5" fill="#E63B2E"/>
+        </svg>
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="cap-in">BẢN VẼ MINH HỌA — MẠNG THOÁT NƯỚC · THAY ẢNH THẬT TẠI ĐÂY</span>
+      </div>
+      <figcaption class="media-cap"><span>HÌNH 01 — SƠ ĐỒ TRỤC: HỐ GA · ỐNG · CAO ĐỘ ĐÁY</span><span>TỶ LỆ MINH HỌA</span></figcaption>
+    </figure>
+
+    <p class="rv">Dựng mô hình thoát nước là việc lặp lại một cách trung thực: hố ga, ống, cao độ đáy — lặp đi lặp lại theo từng bản thiết kế. Mình viết <b>script Dynamo + Python</b> đọc mạng lưới trực tiếp từ bảng tính của kỹ thuật và đặt thẳng vào mô hình.</p>
+    <p class="rv">Khi thiết kế thay đổi — và nó luôn thay đổi — tụi mình <b>chạy lại script</b> thay vì dựng lại cả tuần. Mô hình luôn khớp với bảng tính, và bảng tính luôn là nguồn sự thật duy nhất.</p>
+
+    <div class="pull-stat wide rv">
+      <div><b><em>-80%</em></b><span>Thời gian dựng lặp lại</span></div>
+      <div><b>84</b><span>Hố ga đặt tự động</span></div>
+      <div><b>01</b><span>Lần cập nhật cho mọi bản vẽ</span></div>
+    </div>
+
+    <h2 class="rv">Kết quả mang lại</h2>
+    <ul class="rv">
+      <li>Thời gian dựng hình lặp lại <b>giảm còn một phần nhỏ</b> — công sức dồn vào kiểm tra thay vì đặt hình.</li>
+      <li><b>Bảng tính điều khiển mô hình</b>: sửa số liệu, chạy lại script, mô hình và nhãn tự cập nhật.</li>
+      <li>Script được <b>viết tài liệu đầy đủ</b> để đồng đội tự chạy mà không cần mình ngồi cạnh.</li>
+    </ul>
+
+    <div class="wide rv" style="margin-top:26px;">
+      <div class="media-slot">
+        <svg viewBox="0 0 54 54" fill="none" aria-hidden="true"><rect x="6" y="10" width="42" height="34" rx="3" stroke="#141412" stroke-width="2"/><path d="M6 36 L22 22 L34 32 L48 18" stroke="#141412" stroke-width="2"/><circle cx="38" cy="20" r="4" stroke="#E63B2E" stroke-width="2"/></svg>
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="cap-in">ẢNH 01 — MÔ HÌNH CIVIL 3D · MẠNG THOÁT NƯỚC · 1600×1000</span>
+      </div>
+      <div class="media-cap"><span>HÌNH 02 — CHỖ ĐẶT ẢNH MÔ HÌNH / BẢNG TÍNH ĐẦU VÀO</span><span>JPG · PNG</span></div>
+    </div>
+
+    <div class="wide rv" style="margin-top:8px;">
+      <div class="media-slot">
+        <svg viewBox="0 0 54 54" fill="none" aria-hidden="true"><circle cx="27" cy="27" r="22" stroke="#141412" stroke-width="2"/><path d="M22 18 L38 27 L22 36 Z" fill="#E63B2E"/></svg>
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="cap-in">VIDEO — DEMO CHẠY SCRIPT · MP4 · 1:30</span>
+      </div>
+      <div class="media-cap"><span>HÌNH 03 — CHỖ ĐẶT VIDEO DEMO: SỬA BẢNG TÍNH → CHẠY SCRIPT → MÔ HÌNH CẬP NHẬT</span><span>MP4</span></div>
+    </div>
+
+  </div>
+</div>
+
+<nav class="case-nav" aria-label="Dự án khác">
+  <a href="/du-an/phoi-hop-depot-metro.html"><b>← DỰ ÁN TRƯỚC</b><span class="t">Phối hợp depot metro</span></a>
+  <a href="/du-an/nut-giao-cao-toc.html"><b>DỰ ÁN TIẾP →</b><span class="t">Mô hình nút giao cao tốc</span></a>
+</nav>
+</main>
+
+<footer>
+  <div class="wrap foot-meta">
+    <span>© 2026 MEOCOC — LÀM TẠI SÀI GÒN</span>
+    <span>P.03 / 03</span>
+    <a href="#main" style="color:var(--ink);">LÊN ĐẦU TRANG ↑</a>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>

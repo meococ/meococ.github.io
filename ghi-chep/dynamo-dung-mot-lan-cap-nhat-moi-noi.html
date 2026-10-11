@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamo: dựng một lần, cập nhật mọi nơi — Meo Coc</title>
+<meta name="description" content="Script nhỏ, tiết kiệm hàng chục giờ lặp lại. Cách mình dùng Dynamo + Python để bảng tính điều khiển mô hình thay vì ngược lại.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..500;1,6..72,400..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Tới nội dung chính</a>
+<div class="read-bar" aria-hidden="true"><i id="readbar"></i></div>
+
+<div class="rail-l" aria-hidden="true">MEOCOC — GHI CHÉP</div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="/" class="brand"><i></i>MEOCOC</a>
+    <div class="nav-r">
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="/#projects">DỰ ÁN</a>
+        <a href="/#about">GIỚI THIỆU</a>
+        <a href="/#cv">HỒ SƠ</a>
+        <a href="/#writing" class="act">GHI CHÉP</a>
+        <a href="/#contact">LIÊN HỆ</a>
+      </nav>
+      <a class="avail" href="/#contact"><i></i>SẴN SÀNG 2026</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <a class="back" href="/#writing">← TẤT CẢ GHI CHÉP</a>
+    <div class="kicker rv">GHI CHÉP · TỰ ĐỘNG HÓA</div>
+    <h1 class="rv" style="--d:.08s;">Dynamo: dựng một lần, cập nhật mọi nơi</h1>
+    <div class="post-meta rv" style="--d:.16s;"><span><em>2026.10</em></span><span>5 PHÚT ĐỌC</span><span>TỰ ĐỘNG HÓA</span></div>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="case-grid">
+
+    <p class="rv">Có một loại công việc trong nghề xây dựng mà ai cũng chấp nhận như luật trời: <b>việc lặp lại</b>. Hố ga thứ 37 giống hố ga thứ 36, chỉ khác cao độ đáy. Bản vẽ lòng đường sửa, thì 200 nhãn trên 20 sheet phải sửa theo. Mình không chấp nhận luật trời đó.</p>
+
+    <h2 class="rv">Bảng tính là nguồn sự thật</h2>
+    <p class="rv">Nguyên tắc mình chọn rất đơn giản: <b>mô hình không phải nơi lưu dữ liệu — bảng tính mới là</b>. Kỹ thuật đã quen làm việc với Excel, vậy thì cứ để bảng tính làm nguồn sự thật, còn script chỉ có một nhiệm vụ: đọc và dựng.</p>
+    <ul class="rv">
+      <li>Mỗi hố ga một dòng: tọa độ X/Y, cao độ miệng, cao độ đáy, kích thước.</li>
+      <li>Mỗi đoạn ống một dòng: hố ga đầu, hố ga cuối, đường kính, độ dốc.</li>
+      <li>Script đọc toàn bộ, kiểm tra hợp lệ, rồi đặt hình vào mô hình — kèm báo cáo lỗi nếu dữ liệu thiếu.</li>
+    </ul>
+
+    <p class="rv">Luồng xử lý của script giữ thật ngắn, để ai cũng đọc hiểu được:</p>
+
+    <pre class="rv"><code>doc = mở tài khoản Civil 3D
+rows = đọc("mang-luoi-thoat-nuoc.xlsx")
+for row in rows:
+    kiểm_tra(row)          # thiếu cao độ? dừng, báo dòng lỗi
+    đặt_hố_ga(row)         # family + tham số từ bảng tính
+    đặt_ống(row.a, row.b)  # nối theo cặp, cao độ đáy theo độ dốc
+ghi_log("đã đặt", len(rows))
+cập_nhật_tất_cả_nhãn()</code></pre>
+
+    <h2 class="rv">Ba bài học rút ra</h2>
+    <ul class="rv">
+      <li><b>Script phải chết một cách êm ái.</b> Dữ liệu sai thì dừng lại và nói rõ lỗi ở dòng nào — đừng bao giờ đặt hình sai rồi để người khác phát hiện ngoài công trường.</li>
+      <li><b>Tài liệu hóa là phần của script.</b> Một script chỉ mình chạy được thì không phải tự động hóa — đó chỉ là cách mình làm việc nhanh hơn một người.</li>
+      <li><b>Đừng tự động hóa thứ chưa ổn định.</b> Quy tắc đặt tên còn đang đổi mỗi tuần? Ổn định nó trước đã, rồi hẵng viết script — không thì script của bạn cũng đổi theo mỗi tuần.</li>
+    </ul>
+
+    <blockquote class="rv">Khi thiết kế thay đổi — và nó luôn thay đổi — chạy lại script mất hai phút. Dựng tay mất hai tuần. Chọn đi.</blockquote>
+
+    <p class="rv">Trên dự án thoát nước gần đây, cả mạng lưới 84 hố ga được đặt tự động từ bảng tính, và mỗi lần điều chỉnh cao độ chỉ tốn một lần chạy script. Cái giá duy nhất là thời gian viết script ban đầu — cái lãi là mọi lần thay đổi sau đó. Với nghề của mình, đó là khoản đầu tư lãi kép rõ ràng nhất.</p>
+
+  </div>
+</div>
+
+<nav class="case-nav" aria-label="Bài viết khác">
+  <a href="/ghi-chep/checklist-kiem-tra-xung-dot.html"><b>← BÀI TRƯỚC</b><span class="t">Checklist kiểm tra xung đột cho buổi họp phối hợp</span></a>
+  <a href="/du-an/tu-dong-hoa-thoat-nuoc.html"><b>DỰ ÁN LIÊN QUAN →</b><span class="t">Tự động hóa mạng thoát nước</span></a>
+</nav>
+</main>
+
+<footer>
+  <div class="wrap foot-meta">
+    <span>© 2026 MEOCOC — LÀM TẠI SÀI GÒN</span>
+    <span>GHI CHÉP · TỰ ĐỘNG HÓA</span>
+    <a href="#main" style="color:var(--ink);">LÊN ĐẦU TRANG ↑</a>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>
