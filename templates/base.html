@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..500;1,6..72,400..500&display=swap" rel="stylesheet">
+<script>if(location.search.indexOf('static')>-1){document.documentElement.classList.add('no-anim');document.documentElement.style.scrollBehavior='auto';}</script>
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% if intro %}<link rel="alternate" hreflang="en" href="https://meococ.github.io/en/">
+<link rel="alternate" hreflang="vi" href="https://meococ.github.io/">
+{% endif %}</head>
+<body>
+<a class="skip" href="#main">{{ skip }}</a>
+{% if read_bar %}<div class="read-bar" aria-hidden="true"><i id="readbar"></i></div>
+{% endif %}
+{% if intro %}
+<div id="intro" aria-hidden="true">
+  <div class="in-name"><span>T</span><span>R</span><span>Ự</span><span>C</span></div>
+  <div class="in-sub">{{ intro_sub | safe }}</div>
+</div>
+<noscript><style>#intro{display:none}.mask>span,.rv{opacity:1!important;transform:none!important}</style></noscript>
+{% endif %}
+{% if rail %}<div class="rail-l" aria-hidden="true">{{ rail | safe }}</div>
+{% endif %}{% if not read_bar %}<div class="rail-r" aria-hidden="true"><i id="progress"></i></div>
+{% endif %}
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="{{ home | safe }}" class="brand">TRỰC<i></i></a>
+    <div class="nav-r">
+      <nav class="nav-links" aria-label="{{ nav_aria }}">
+        {% for item in nav_items %}<a href="{{ item.href | safe }}"{% if item.key == section %} class="act"{% endif %}>{{ item.label }}</a>
+        {% endfor %}
+      </nav>
+      <a class="lang" href="{{ lang_switch | safe }}" lang="{{ other_lang }}" hreflang="{{ other_lang }}">{{ other_lang | upper }}</a>
+      <a class="avail" href="{{ home | safe }}#contact"><i></i>{{ avail }}</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="{{ menu_label }}"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="wrap">
+      {% for item in nav_items %}<a href="{{ item.href | safe }}"{% if item.key == section %} class="act"{% endif %}>{{ item.label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</header>
+
+{% block main %}{{ body | safe }}{% endblock %}
+
+<footer>
+{% if marquee %}  <div class="foot-mq mq-wrap" style="background:transparent;color:var(--ink);padding-top:34px;" aria-hidden="true">
+    <div class="mq">
+      {% for item in marquee_items %}<span>{{ item | safe }}<i>—</i></span>{% endfor %}
+      {% for item in marquee_items %}<span>{{ item | safe }}<i>—</i></span>{% endfor %}
+    </div>
+  </div>
+{% endif %}  <div class="wrap foot-meta">
+    <span>{{ foot_left | safe }}</span>
+    {% if foot_tag %}<span>{{ foot_tag | safe }}</span>
+    {% endif %}<a href="#{% if intro %}top{% else %}main{% endif %}" style="color:var(--ink);">{{ foot_top | safe }}</a>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>

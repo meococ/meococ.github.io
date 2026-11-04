@@ -262,11 +262,12 @@ footer{overflow:hidden;}
 .case-grid>*{grid-column:2;}
 .case-grid .wide{grid-column:1/-1;}
 .case-grid p{color:var(--ink-2);font-size:16.5px;line-height:1.85;margin-bottom:26px;}
-.case-grid p b,.case-grid li b{color:var(--ink);font-weight:600;}
+.case-grid p b,.case-grid li b,.case-grid p strong,.case-grid li strong{color:var(--ink);font-weight:600;}
 .case-grid h2{font-weight:800;font-stretch:106%;font-size:1.5rem;letter-spacing:-.01em;margin:44px 0 18px;}
 .case-grid ul{margin:0 0 26px 20px;color:var(--ink-2);font-size:15.5px;line-height:1.9;}
 .case-grid ul li{margin-top:8px;}
 .case-grid blockquote{font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:1.6;color:var(--ink);border-left:3px solid var(--red);padding:4px 0 4px 24px;margin:36px 0;}
+.case-grid blockquote p{font:inherit;color:inherit;line-height:inherit;margin:0;}
 .case-grid code{font-family:var(--mono);font-size:.85em;background:var(--paper-2);border:1px solid var(--line);padding:2px 7px;border-radius:5px;}
 .case-grid pre{font-family:var(--mono);font-size:13px;line-height:1.7;background:var(--ink);color:#E8E6DE;padding:22px 26px;overflow-x:auto;margin:0 0 26px;border-radius:10px;}
 .case-grid pre code{background:none;border:0;padding:0;color:inherit;}
