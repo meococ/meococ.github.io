@@ -21,8 +21,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: dtolnay/rust-toolchain@stable
-        with:
-          cache: workspace
+      - uses: Swatinem/rust-cache@v2
 
       - name: Build site
         run: cargo run --release -- build
