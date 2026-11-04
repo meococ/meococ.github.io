@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Huynh Trung Truc — BIM Coordinator</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..500;1,6..72,400..500&display=swap" rel="stylesheet">
+<style>
+  @page{size:A4;margin:0;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--ink:#141412;--ink2:#55534D;--ink3:#6F6D64;--line:#DDDACF;--red:#E63B2E;--red-deep:#C42D21;--mono:'IBM Plex Mono',Consolas,monospace;--disp:'Archivo',Arial,sans-serif;--serif:'Newsreader',Georgia,serif;}
+  body{font-family:var(--disp);color:var(--ink);font-size:10.2pt;line-height:1.5;padding:13mm 14mm 11mm;}
+  .head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2.2pt solid var(--ink);padding-bottom:5mm;}
+  .name{font-weight:900;font-stretch:112%;font-size:26pt;letter-spacing:-.02em;line-height:1;text-transform:uppercase;}
+  .name em{color:var(--red);font-style:normal;}
+  .role{font-family:var(--mono);font-size:8.4pt;letter-spacing:.14em;color:var(--ink2);margin-top:3mm;text-transform:uppercase;}
+  .contact{font-family:var(--mono);font-size:8pt;line-height:1.75;color:var(--ink2);text-align:right;}
+  .contact b{color:var(--ink);font-weight:500;}
+  .grid{display:grid;grid-template-columns:1fr 2.02fr;gap:7mm;margin-top:6mm;}
+  h2{font-family:var(--mono);font-weight:500;font-size:8.4pt;letter-spacing:.2em;color:var(--red-deep);text-transform:uppercase;margin-bottom:2.6mm;}
+  .sec{margin-bottom:6mm;}
+  .item{margin-bottom:4.4mm;}
+  .item:last-child{margin-bottom:0;}
+  .item .top{display:flex;justify-content:space-between;align-items:baseline;}
+  .item b{font-weight:800;font-stretch:106%;font-size:10.6pt;letter-spacing:-.01em;}
+  .item .when{font-family:var(--mono);font-size:7.8pt;color:var(--ink3);white-space:nowrap;}
+  .item .sub{font-family:var(--mono);font-size:7.8pt;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin:.8mm 0 1.4mm;}
+  .item p{color:var(--ink2);font-size:9.3pt;line-height:1.5;}
+  .item p b{font-weight:600;font-size:9.3pt;font-stretch:normal;color:var(--ink);}
+  ul{margin:0 0 0 4mm;color:var(--ink2);font-size:9.3pt;line-height:1.5;}
+  li{margin-bottom:.8mm;}
+  .tags{display:flex;flex-wrap:wrap;gap:1.8mm;}
+  .tags span{font-family:var(--mono);font-size:7.6pt;border:.6pt solid var(--ink3);border-radius:99px;padding:1mm 2.6mm;color:var(--ink2);}
+  .quote{font-family:var(--serif);font-style:italic;font-size:10.6pt;line-height:1.5;color:var(--ink);border-left:2pt solid var(--red);padding-left:3.4mm;}
+  .foot{border-top:.8pt solid var(--ink);margin-top:6mm;padding-top:3mm;display:flex;justify-content:space-between;font-family:var(--mono);font-size:7.4pt;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div>
+    <div class="name">Huynh<br>Trung Truc<em>.</em></div>
+    <div class="role">BIM Coordinator — Infrastructure · Ho Chi Minh City, Vietnam</div>
+  </div>
+  <div class="contact">
+    <b>toilatruc999@gmail.com</b><br>
+    github.com/meococ · meococ.github.io<br>
+    Vietnamese (native) · English
+  </div>
+</div>
+
+<div class="grid">
+  <div>
+    <div class="sec">
+      <h2>Profile</h2>
+      <p class="quote">I turn drawings, disciplines and deadlines into one federated model — and automate whatever repeats.</p>
+    </div>
+    <div class="sec">
+      <h2>Tools</h2>
+      <div class="tags">
+        <span>Revit</span><span>Navisworks</span><span>Civil 3D</span><span>Dynamo</span><span>BIM 360</span><span>Python</span><span>IFC / BEP</span><span>Clash QA·QC</span>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Open Source</h2>
+      <div class="item">
+        <b>BIMCraft</b> — Rust BIM engine<br>
+        <p>Contributor: flaky-test fix in the point-cloud suite (<b>PR #255</b>).</p>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Education</h2>
+      <div class="item">
+        <div class="top"><b>B.Eng. Civil Engineering</b><span class="when">2017—2021</span></div>
+        <p>University · Vietnam</p>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Off Hours</h2>
+      <p style="font-size:9.3pt;color:var(--ink2);">Trading-system research · dawn running · grassroots football.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="sec">
+      <h2>Experience</h2>
+      <div class="item">
+        <div class="top"><b>BIM Coordinator</b><span class="when">2023 — NOW</span></div>
+        <div class="sub">Infrastructure projects · HCMC</div>
+        <ul>
+          <li>Own the federated model: coordination meetings, clash-resolution workflow, model QA and discipline-to-discipline handover standards.</li>
+          <li>Cut clash-review cycles from weeks to days via automated clash tests ahead of every coordination meeting.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="top"><b>BIM Modeler</b><span class="when">2021 — 2023</span></div>
+        <div class="sub">Roads &amp; Drainage</div>
+        <ul>
+          <li>Modeled alignments, structures and utilities; built the Dynamo habit that later became automation tooling.</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="top"><b>Civil Engineering Student</b><span class="when">2017 — 2021</span></div>
+        <div class="sub">University · Vietnam</div>
+        <p>Where drawings first became models, and models became a career.</p>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>Selected Projects</h2>
+      <div class="item">
+        <div class="top"><b>Highway Interchange — federated model</b><span class="when">2024</span></div>
+        <p>Full-discipline BIM for a multi-level interchange: alignment, structure and drainage in one linked model. <b>−70% clash-review time · 100% IFC handover to BEP.</b></p>
+      </div>
+      <div class="item">
+        <div class="top"><b>Metro Depot — clash coordination</b><span class="when">2023</span></div>
+        <p>Structured clash matrix and coordination workflow for a rail depot. <b>300+ clashes closed pre-construction · 12 discipline pairs · meetings always on time.</b></p>
+      </div>
+      <div class="item">
+        <div class="top"><b>Drainage Network — Dynamo + Python</b><span class="when">2023</span></div>
+        <p>Script reads the drainage network straight from the engineer's spreadsheet into the model — build once, update everywhere. <b>−80% repetitive modeling · 84 manholes placed.</b></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <span>© 2026 Huynh Trung — Saigon</span>
+  <span>meococ.github.io</span>
+</div>
+
+</body>
+</html>

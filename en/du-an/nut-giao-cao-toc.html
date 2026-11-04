@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highway interchange model — Huynh Trung</title>
+<meta name="description" content="Case study: full-discipline BIM model for a multi-level interchange — alignment, structure and drainage in one linked model.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..500;1,6..72,400..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="rail-l" aria-hidden="true">HUYNH TRUNG — SAIGON — 10.8231°N 106.6297°E</div>
+<div class="rail-r" aria-hidden="true"><i id="progress"></i></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="/en/" class="brand">TRỰC<i></i></a>
+    <div class="nav-r">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="/en/#projects" class="act">PROJECTS</a>
+        <a href="/en/#about">ABOUT</a>
+        <a href="/en/#cv">RÉSUMÉ</a>
+        <a href="/en/#writing">NOTES</a>
+        <a href="/en/#contact">CONTACT</a>
+      </nav>
+      <a class="lang" href="/" lang="vi" hreflang="vi">VI</a>
+      <a class="avail" href="/en/#contact"><i></i>OPEN 2026</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="wrap">
+      <a href="/en/#projects" class="act">PROJECTS</a>
+      <a href="/en/#about">ABOUT</a>
+      <a href="/en/#cv">RÉSUMÉ</a>
+      <a href="/en/#writing">NOTES</a>
+      <a href="/en/#contact">CONTACT</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <a class="back" href="/en/#projects">← ALL PROJECTS</a>
+    <div class="kicker rv">PROJECT · P.01 — HIGHWAY INFRASTRUCTURE</div>
+    <h1 class="rv" style="--d:.08s;view-transition-name:p1;">Highway interchange model</h1>
+    <div class="meta-grid rv" style="--d:.16s;">
+      <div><b>Year</b><span>2024</span></div>
+      <div><b>Role</b><span>BIM Coordinator</span></div>
+      <div><b>Tools</b><span>Revit · Navisworks · Civil 3D</span></div>
+      <div><b>Disciplines</b><span>Alignment · Structure · Drainage</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="case-grid">
+
+    <figure class="wide rv" style="margin:0;">
+      <div class="media-slot" style="background:var(--paper);aspect-ratio:21/9;">
+        <svg viewBox="0 0 720 260" fill="none" style="width:80%;height:auto;position:static;" aria-hidden="true">
+          <g stroke="#141412" stroke-width="2.4" stroke-linecap="round">
+            <path d="M70 190 H650"/>
+            <path d="M210 190 V86 M510 190 V86"/>
+            <path d="M210 86 Q360 170 510 86"/>
+            <g stroke-width="1.4" opacity=".65"><path d="M210 96 L510 168 M210 122 L510 194 M210 148 L510 216"/></g>
+            <path d="M210 190 V222 M510 190 V222" stroke-width="3"/>
+            <path d="M40 222 H680" opacity=".5"/>
+          </g>
+          <g stroke="#8B897F" stroke-width="1.2"><path d="M70 40 H650 M70 33 V47 M650 33 V47"/><text x="300" y="30" font-family="IBM Plex Mono" font-size="13" fill="#6F6D64">SPAN 120.0 m</text></g>
+          <circle cx="360" cy="136" r="5" fill="#E63B2E"/>
+        </svg>
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="cap-in">ILLUSTRATIVE DRAWING — MODEL IMAGERY GOES HERE</span>
+      </div>
+      <figcaption class="media-cap"><span>FIG. 01 — CABLE-STAYED BRIDGE DIAGRAM AT THE INTERCHANGE</span><span>ILLUSTRATIVE SCALE</span></figcaption>
+    </figure>
+
+    <p class="rv">A multi-level interchange is where every discipline meets — <b>literally</b>. The road alignment from Civil 3D, bridge structure from Revit, and the drainage network threading between pile caps — all living inside a single linked model.</p>
+    <p class="rv">My job was <b>the joints</b>: a shared coordinate system for the whole project, drawing naming rules, a weekly clash-review cycle, and a decision log so no conflict ever had to be solved twice.</p>
+
+    <div class="pull-stat wide rv">
+      <div><b>01</b><span>Single linked model</span></div>
+      <div><b><em>-70%</em></b><span>Clash-review time</span></div>
+      <div><b>100<em>%</em></b><span>IFC handover per BEP</span></div>
+    </div>
+
+    <h2 class="rv">Outcomes</h2>
+    <ul class="rv">
+      <li>One linked model covering <b>alignment, structure and drainage</b> — every party working on the same coordinate base.</li>
+      <li>Clash-review cycle cut from <b>weeks to days</b> via automated clash tests ahead of every coordination meeting.</li>
+      <li>Clean IFC handover matching the project BEP — the contractor could start on the model immediately.</li>
+    </ul>
+
+    <div class="wide rv" style="margin-top:26px;">
+      <div class="media-slot">
+        <svg viewBox="0 0 54 54" fill="none" aria-hidden="true"><rect x="6" y="10" width="42" height="34" rx="3" stroke="#141412" stroke-width="2"/><path d="M6 36 L22 22 L34 32 L48 18" stroke="#141412" stroke-width="2"/><circle cx="38" cy="20" r="4" stroke="#E63B2E" stroke-width="2"/></svg>
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="cap-in">PHOTO 01 — LINKED MODEL · SPAN SECTION · 1600×1000</span>
+      </div>
+      <div class="media-cap"><span>FIG. 02 — SLOT FOR RENDER / NAVISWORKS SCREENSHOT</span><span>JPG · PNG</span></div>
+    </div>
+
+    <div class="wide rv" style="margin-top:8px;">
+      <div class="media-slot">
+        <svg viewBox="0 0 54 54" fill="none" aria-hidden="true"><circle cx="27" cy="27" r="22" stroke="#141412" stroke-width="2"/><path d="M22 18 L38 27 L22 36 Z" fill="#E63B2E"/></svg>
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="cap-in">VIDEO — MODEL WALKTHROUGH · MP4 · 2:00</span>
+      </div>
+      <div class="media-cap"><span>FIG. 03 — SLOT FOR 3D FLY-THROUGH VIDEO</span><span>MP4</span></div>
+    </div>
+
+  </div>
+</div>
+
+<nav class="case-nav" aria-label="Other projects">
+  <a href="/en/du-an/tu-dong-hoa-thoat-nuoc.html"><b>← PREVIOUS</b><span class="t">Drainage network automation</span></a>
+  <a href="/en/du-an/phoi-hop-depot-metro.html"><b>NEXT →</b><span class="t">Metro depot coordination</span></a>
+</nav>
+</main>
+
+<footer>
+  <div class="wrap foot-meta">
+    <span>© 2026 HUYNH TRUNG — MADE IN SAIGON · MEOCOC'S SITE</span>
+    <span>P.01 / 03</span>
+    <a href="#main" style="color:var(--ink);">BACK TO TOP ↑</a>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>

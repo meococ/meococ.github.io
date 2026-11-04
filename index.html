@@ -10,6 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..500;1,6..72,400..500&display=swap" rel="stylesheet">
 <script>if(location.search.indexOf('static')>-1){document.documentElement.classList.add('no-anim');document.documentElement.style.scrollBehavior='auto';}</script>
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="en" href="https://meococ.github.io/en/">
+<link rel="alternate" hreflang="vi" href="https://meococ.github.io/">
 </head>
 <body>
 <a class="skip" href="#main">Tới nội dung chính</a>
@@ -34,7 +37,18 @@
         <a href="/#writing">GHI CHÉP</a>
         <a href="/#contact">LIÊN HỆ</a>
       </nav>
+      <a class="lang" href="/en/" lang="en" hreflang="en">EN</a>
       <a class="avail" href="/#contact"><i></i>SẴN SÀNG 2026</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Mở menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <div class="wrap">
+      <a href="/#projects">DỰ ÁN</a>
+      <a href="/#about">GIỚI THIỆU</a>
+      <a href="/#cv">HỒ SƠ</a>
+      <a href="/#writing">GHI CHÉP</a>
+      <a href="/#contact">LIÊN HỆ</a>
     </div>
   </div>
 </header>
@@ -168,7 +182,7 @@
     </div>
     <div class="cv-foot rv">
       <p>— Bản PDF một trang với đầy đủ: dự án, công cụ và trách nhiệm.</p>
-      <a class="btn" href="#">TẢI CV ↓</a>
+      <a class="btn" href="/assets/cv-huynh-trung-truc.pdf" download>TẢI CV ↓</a>
     </div>
   </div>
 </section>
@@ -214,9 +228,10 @@
     </div>
     <div class="socials rv" style="--d:.3s;">
       <a href="https://github.com/meococ" target="_blank" rel="noopener">GITHUB ↗</a>
+      <!-- TODO: khôi phục khi có profile thật
       <a href="#">LINKEDIN ↗</a>
       <a href="#">UPWORK ↗</a>
-      <a href="#">X ↗</a>
+      <a href="#">X ↗</a> -->
     </div>
   </div>
 </section>

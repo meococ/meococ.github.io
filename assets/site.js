@@ -122,7 +122,7 @@
 
   /* nav link active theo section (trang chủ) */
   var sections = [].slice.call(document.querySelectorAll('main > section[id]'));
-  var navLinks = [].slice.call(document.querySelectorAll('.nav-links a'));
+  var navLinks = [].slice.call(document.querySelectorAll('.nav-links a, .nav-panel a'));
   if('IntersectionObserver' in window && sections.length){
     var sio = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
@@ -157,5 +157,23 @@
         fallback();
       }
     });
+  }
+
+  /* menu mobile — burger mở panel trong header */
+  var menuBtn = document.getElementById('menuBtn');
+  var navPanel = document.getElementById('navPanel');
+  if(menuBtn && navPanel){
+    var isEn = document.documentElement.lang === 'en';
+    var setMenu = function(open){
+      navPanel.classList.toggle('open', open);
+      menuBtn.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? (isEn ? 'Close menu' : 'Đóng menu') : (isEn ? 'Open menu' : 'Mở menu'));
+    };
+    menuBtn.addEventListener('click', function(){ setMenu(!navPanel.classList.contains('open')); });
+    [].slice.call(navPanel.querySelectorAll('a')).forEach(function(a){
+      a.addEventListener('click', function(){ setMenu(false); });
+    });
+    window.addEventListener('resize', function(){ if(window.innerWidth > 960) setMenu(false); });
   }
 })();
