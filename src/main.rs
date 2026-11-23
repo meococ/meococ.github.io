@@ -177,6 +177,17 @@ fn page_context(front: &Front, rel: &Path) -> Context {
     ctx.insert("lang", &lang);
     ctx.insert("home", home);
     ctx.insert("section", &section);
+    let url_path = {
+        let s = format!("/{}", rel.to_string_lossy().replace('\\', "/"));
+        if s.ends_with("index.html") {
+            s.trim_end_matches("index.html").to_string()
+        } else {
+            s
+        }
+    };
+    ctx.insert("path", &url_path);
+    ctx.insert("og_locale", if en { "en_US" } else { "vi_VN" });
+    ctx.insert("cta", if en { "Get in touch" } else { "Liên hệ" });
     ctx.insert("rail", front.rail.as_deref().unwrap_or_default());
     ctx.insert("intro", &front.intro.unwrap_or(false));
     ctx.insert("marquee", &front.marquee.unwrap_or(false));
@@ -198,13 +209,13 @@ fn page_context(front: &Front, rel: &Path) -> Context {
     ctx.insert("nav_items", &nav_items(en, home));
     ctx.insert("lang_switch", if en { "/" } else { "/en/" });
     ctx.insert("other_lang", if en { "vi" } else { "en" });
-    ctx.insert("avail", if en { "OPEN 2026" } else { "SẴN SÀNG 2026" });
+    ctx.insert("avail", if en { "OPEN TO WORK" } else { "SẴN SÀNG NHẬN VIỆC" });
     ctx.insert(
         "foot_left",
         if en {
-            "© 2026 HUYNH TRUNG — MADE IN SAIGON · MEOCOC'S SITE"
+            "© 2026 HUYNH TRUNG — SAIGON · MEOCOC"
         } else {
-            "© 2026 HUỲNH TRUNG — LÀM TẠI SÀI GÒN · SITE CỦA MÈO CỌC"
+            "© 2026 HUỲNH TRUNG — SÀI GÒN · MÈO CỌC"
         },
     );
     ctx.insert(
@@ -247,17 +258,17 @@ fn page_context(front: &Front, rel: &Path) -> Context {
 fn nav_items(en: bool, home: &str) -> Vec<NavLink> {
     let labels: [(&str, &str, &str); 5] = if en {
         [
-            ("projects", "PROJECTS", "#projects"),
+            ("projects", "WORK", "#projects"),
             ("about", "ABOUT", "#about"),
-            ("cv", "RÉSUMÉ", "#cv"),
-            ("writing", "NOTES", "#writing"),
+            ("experience", "EXPERIENCE", "#experience"),
+            ("writing", "WRITING", "#writing"),
             ("contact", "CONTACT", "#contact"),
         ]
     } else {
         [
             ("projects", "DỰ ÁN", "#projects"),
             ("about", "GIỚI THIỆU", "#about"),
-            ("cv", "HỒ SƠ", "#cv"),
+            ("experience", "KINH NGHIỆM", "#experience"),
             ("writing", "GHI CHÉP", "#writing"),
             ("contact", "LIÊN HỆ", "#contact"),
         ]

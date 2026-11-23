@@ -2,26 +2,26 @@
 
 {% block main %}
 <main id="main">
-<section class="page-hero">
-  <div class="wrap">
+<div class="wrap">
+  <section class="post-hero">
     <a class="back" href="{{ back_href | safe }}">← {{ back_label }}</a>
-    <div class="kicker rv">{{ kicker }}</div>
+    <div class="eyebrow rv">{{ kicker }}</div>
     <h1 class="rv" style="--d:.08s;">{{ title_h1 }}</h1>
     <div class="post-meta rv" style="--d:.16s;"><span><em>{{ date }}</em></span><span>{{ minutes }}</span><span>{{ tag }}</span></div>
-  </div>
-</section>
-
-<div class="case-body">
-  <div class="case-grid">
+  </section>
+</div>
+<div class="post-body">
+  <div class="wrap">
+    <div class="prose">
 
 {{ body | safe }}
 
+    </div>
+    <nav class="post-nav" aria-label="Bài viết khác">
+      {% for n in nav %}<a href="{{ n.href | safe }}"><b>{{ n.label }}</b><span class="t">{{ n.title }}</span></a>
+      {% endfor %}
+    </nav>
   </div>
 </div>
-
-<nav class="case-nav" aria-label="Bài viết khác">
-  {% for n in nav %}<a href="{{ n.href | safe }}"><b>{{ n.label }}</b><span class="t">{{ n.title }}</span></a>
-  {% endfor %}
-</nav>
 </main>
 {% endblock %}

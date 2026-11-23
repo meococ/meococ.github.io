@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://meococ.github.io/</loc>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://meococ.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://meococ.github.io/en/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://meococ.github.io/en/</loc>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://meococ.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://meococ.github.io/en/"/>
+    <priority>0.9</priority>
+  </url>
+  <url><loc>https://meococ.github.io/du-an/nut-giao-cao-toc.html</loc><priority>0.8</priority></url>
+  <url><loc>https://meococ.github.io/du-an/phoi-hop-depot-metro.html</loc><priority>0.8</priority></url>
+  <url><loc>https://meococ.github.io/du-an/tu-dong-hoa-thoat-nuoc.html</loc><priority>0.8</priority></url>
+  <url><loc>https://meococ.github.io/en/du-an/nut-giao-cao-toc.html</loc><priority>0.7</priority></url>
+  <url><loc>https://meococ.github.io/en/du-an/phoi-hop-depot-metro.html</loc><priority>0.7</priority></url>
+  <url><loc>https://meococ.github.io/en/du-an/tu-dong-hoa-thoat-nuoc.html</loc><priority>0.7</priority></url>
+  <url><loc>https://meococ.github.io/ghi-chep/checklist-kiem-tra-xung-dot.html</loc><priority>0.6</priority></url>
+  <url><loc>https://meococ.github.io/ghi-chep/dynamo-dung-mot-lan-cap-nhat-moi-noi.html</loc><priority>0.6</priority></url>
+</urlset>
